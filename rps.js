@@ -1,6 +1,5 @@
 function getComputerChoice() {
-  let computerChoice = Math.floor((Math.random() * 3) + 1);
-  switch (computerChoice) {
+  switch (Math.floor((Math.random() * 3) + 1)) {
     case 1:
       return 'rock';
       break;
@@ -17,8 +16,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-  // This is temporary hardcoded for now until I get to coding out this function
-  const playerChoice = 'rock';
+  const playerChoice = prompt('What is your selection?').toLowerCase();
   return playerChoice;
 }
 
@@ -26,11 +24,11 @@ function playRound(computerSelection, playerSelection) {
   console.log(`Computer played: ${computerSelection}`)
   console.log(`Player played: ${playerSelection}`)
   if ((computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'rock')) {
-    return 'Computer wins this round';
+    return `${computerSelection} beats ${playerSelection}. You lose this one.`;
   } else if (computerSelection === playerSelection) {
-    return 'Round is a draw'
+    return 'Round is a draw...'
   } else {
-    return 'You win the round!';
+    return `${playerSelection} beats ${computerSelection}. You win this round!`;
   }
 }
 
