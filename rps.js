@@ -22,21 +22,41 @@ function getPlayerChoice() {
 
 function playRound(computerSelection, playerSelection) {
   console.log(`Computer played: ${computerSelection}`)
-  console.log(`Player played: ${playerSelection}`)
   if ((computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'rock')) {
-    return `${computerSelection} beats ${playerSelection}. You lose this one.`;
+    return 'lose';
   } else if (computerSelection === playerSelection) {
-    return 'Round is a draw...'
+    return 'draw'
   } else {
-    return `${playerSelection} beats ${computerSelection}. You win this round!`;
+    return 'win';
   }
 }
 
 function game() {
-  let roundResult = playRound(getComputerChoice(), getPlayerChoice());
-  console.log(roundResult);
+  let computerScore = 0;
+  let playerScore = 0;
 
+  for (let i = 0; i < 5; i++) {
+    let roundResult = playRound(getComputerChoice(), getPlayerChoice());
+    switch (roundResult) {
+      case 'win':
+        console.log('You win this round!');
+        playerScore++
+        break;
+      case 'lose':
+        console.log('You lose this round!');
+        computerScore++
+        break;
+      case 'draw':
+        console.log('This round was a draw!');
+        break;
+    }
+  }
 
+  if (computerScore > playerScore) {
+    console.log(`Computer wins the game with a score of ${computerScore}`);
+  } else {
+    console.log(`You win the game with a score of ${playerScore}`);
+  }
 }
 
 game()
