@@ -1,24 +1,32 @@
-const rockButton = document.querySelector("#rock");
-const paperButton = document.querySelector("#paper");
-const scissorsButton = document.querySelector("#scissors");
+// const rockButton = document.querySelector("#rock");
+// const paperButton = document.querySelector("#paper");
+// const scissorsButton = document.querySelector("#scissors");
 
-rockButton.addEventListener("click", function() {
-  const result = playRound(getComputerChoice(), "rock");
-  const roundResultDiv = document.querySelector("#roundResult");
-  roundResultDiv.textContent = `You ${result} this round!`;
-});
+// rockButton.addEventListener("click", function() {
+//   const result = playRound(getComputerChoice(), "rock");
+//   const roundResultDiv = document.querySelector("#roundResult");
+//   roundResultDiv.textContent = `You ${result} this round!`;
+// });
 
-paperButton.addEventListener("click", function() {
-  const result = playRound(getComputerChoice(), "paper");
-  const roundResultDiv = document.querySelector("#roundResult");
-  roundResultDiv.textContent = `You ${result} this round!`;
-});
+// paperButton.addEventListener("click", function() {
+//   const result = playRound(getComputerChoice(), "paper");
+//   const roundResultDiv = document.querySelector("#roundResult");
+//   roundResultDiv.textContent = `You ${result} this round!`;
+// });
 
-scissorsButton.addEventListener("click", function() {
-  const result = playRound(getComputerChoice(), "scissor");
-  const roundResultDiv = document.querySelector("#roundResult");
-  roundResultDiv.textContent = `You ${result} this round!`;
-});
+// scissorsButton.addEventListener("click", function() {
+//   const result = playRound(getComputerChoice(), "scissor");
+//   const roundResultDiv = document.querySelector("#roundResult");
+//   roundResultDiv.textContent = `You ${result} this round!`;
+// });
+
+
+const playerChoiceButtons = document.querySelectorAll(".playerSelectionButton");
+playerChoiceButtons.forEach(button => button.addEventListener("click", function() {
+  let computerSelection = getComputerChoice();
+  let playerSelection = button.id;
+  playRound(computerSelection, playerSelection);
+}));
 
 function getComputerChoice() {
   switch (Math.floor((Math.random() * 3) + 1)) {
