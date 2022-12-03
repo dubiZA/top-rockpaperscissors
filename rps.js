@@ -2,9 +2,23 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-rockButton.addEventListener("click", () => playRound(getComputerChoice(), "rock"));
-paperButton.addEventListener("click", () => playRound(getComputerChoice(), "paper"));
-scissorsButton.addEventListener("click", () => playRound(getComputerChoice(), "scissors"));
+rockButton.addEventListener("click", function() {
+  const result = playRound(getComputerChoice(), "rock");
+  const roundResultDiv = document.querySelector("#roundResult");
+  roundResultDiv.textContent = `You ${result} this round!`;
+});
+
+paperButton.addEventListener("click", function() {
+  const result = playRound(getComputerChoice(), "paper");
+  const roundResultDiv = document.querySelector("#roundResult");
+  roundResultDiv.textContent = `You ${result} this round!`;
+});
+
+scissorsButton.addEventListener("click", function() {
+  const result = playRound(getComputerChoice(), "scissor");
+  const roundResultDiv = document.querySelector("#roundResult");
+  roundResultDiv.textContent = `You ${result} this round!`;
+});
 
 function getComputerChoice() {
   switch (Math.floor((Math.random() * 3) + 1)) {
