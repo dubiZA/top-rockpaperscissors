@@ -35,22 +35,22 @@ function game() {
   let computerScore = 0;
   let playerScore = 0;
 
-  for (let i = 0; i < 5; i++) {
-    let roundResult = playRound(getComputerChoice(), getPlayerChoice());
-    switch (roundResult) {
-      case "win":
-        console.log("You win this round!");
-        playerScore++
-        break;
-      case "lose":
-        console.log("You lose this round!");
-        computerScore++
-        break;
-      case "draw":
-        console.log("This round was a draw!");
-        break;
-    }
+  // for (let i = 0; i < 5; i++) {
+  let roundResult = playRound(getComputerChoice(), getPlayerChoice());
+  switch (roundResult) {
+    case "win":
+      console.log("You win this round!");
+      playerScore++
+      break;
+    case "lose":
+      console.log("You lose this round!");
+      computerScore++
+      break;
+    case "draw":
+      console.log("This round was a draw!");
+      break;
   }
+  // }
 
   if (computerScore > playerScore) {
     console.log(`Computer wins the game with a score of ${computerScore}`);
