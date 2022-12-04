@@ -22,6 +22,7 @@
 
 
 const playerChoiceButtons = document.querySelectorAll(".playerSelectionButton");
+
 playerChoiceButtons.forEach(button => button.addEventListener("click", function() {
   let computerSelection = getComputerChoice();
   let playerSelection = button.id;
@@ -45,18 +46,21 @@ function getComputerChoice() {
   }
 }
 
-function getPlayerChoice() {
-  const playerChoice = prompt("What is your selection?").toLowerCase();
-  return playerChoice;
-}
+// function getPlayerChoice() {
+//   const playerChoice = prompt("What is your selection?").toLowerCase();
+//   return playerChoice;
+// }
 
 function playRound(computerSelection, playerSelection) {
-  console.log(`Computer played: ${computerSelection}`)
+  const roundResultDiv = document.querySelector("#roundResult");
   if ((computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "rock")) {
+    roundResultDiv.textContent = `Computer played ${computerSelection}. You lose this round.`;
     return "lose";
   } else if (computerSelection === playerSelection) {
+    roundResultDiv.textContent = `Computer played ${computerSelection}. This round is a draw.`;
     return "draw"
   } else {
+    roundResultDiv.textContent = `Computer played ${computerSelection}. You win this round.`;
     return "win";
   }
 }
